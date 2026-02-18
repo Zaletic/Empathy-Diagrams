@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empathy Analysis - Enhanced Research Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           RESET & GLOBAL STYLES
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(44, 62, 80, 0.15);
+            overflow: hidden;
+        }
+
+        /* ========================================
+           HEADER & NAVIGATION
+           ======================================== */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            border-bottom: 4px solid #667eea;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        /* ========================================
+           MAIN CONTENT
+           ======================================== */
+        main {
+            padding: 50px 40px;
+        }
+
+        section {
+            margin-bottom: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #ecf0f1;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.1);
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+           ======================================== */
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #764ba2;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        h2:hover {
+            color: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 28px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: #2c3e50;
+        }
+
+        /* ========================================
+           SUBSECTIONS & CONTAINERS
+           ======================================== */
+        .subsection {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+            position: relative;
+        }
+
+        .subsection::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .subsection h3 {
+            margin-top: 0;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+            font-size: 0.9em;
+            color: #2c3e50;
+        }
+
+        .figure-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fcfdfe 100%);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+
+        .figure-card h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .img-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            margin: 20px auto;
+            display: block;
+        }
+
+        .img-explanation {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid #764ba2;
+            margin-top: 15px;
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: #2c3e50;
+        }
+
+        .img-explanation h5 {
+            color: #764ba2;
+            font-size: 0.95em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 40px;
+            border-top: 4px solid #667eea;
+        }
+
+        footer p {
+            color: #ecf0f1;
+            margin-bottom: 8px;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        /* Tablet Screens (768px and below) */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+                margin-bottom: 10px;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            nav {
+                padding: 15px 20px;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 0.85em;
+                padding: 8px 12px;
+            }
+
+            main {
+                padding: 30px 20px;
+            }
+
+            section {
+                padding: 25px 20px;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            h4 {
+                font-size: 1em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            .figure-card {
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+            .figure-card h4 {
+                font-size: 1.05em;
+                margin-bottom: 15px;
+            }
+
+            img {
+                margin: 15px auto;
+            }
+
+            .img-explanation {
+                padding: 15px;
+                font-size: 0.9em;
+            }
+
+            .img-explanation h5 {
+                font-size: 0.9em;
+            }
+
+            footer {
+                padding: 20px 20px;
+            }
+
+            footer p {
+                font-size: 0.85em;
+            }
+        }
+
+        /* Mobile Screens (480px and below) */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                border-radius: 8px;
+                box-shadow: 0 5px 20px rgba(44, 62, 80, 0.1);
+            }
+
+            header {
+                padding: 30px 15px;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+                margin-bottom: 8px;
+                letter-spacing: 0px;
+            }
+
+            header p {
+                font-size: 0.9em;
+                opacity: 0.95;
+            }
+
+            nav {
+                padding: 12px 15px;
+                gap: 5px;
+                flex-direction: column;
+            }
+
+            nav a {
+                font-size: 0.8em;
+                padding: 8px 10px;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a:hover,
+            nav a.active {
+                background: #667eea;
+                color: white;
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            section {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+                padding-bottom: 8px;
+                border-bottom: 2px solid #764ba2;
+            }
+
+            h3 {
+                font-size: 1.1em;
+                margin-top: 15px;
+                margin-bottom: 12px;
+            }
+
+            h4 {
+                font-size: 0.95em;
+                margin-top: 15px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 0.88em;
+                line-height: 1.5;
+                margin-bottom: 12px;
+            }
+
+            .figure-card {
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 6px;
+            }
+
+            .figure-card h4 {
+                font-size: 1em;
+                margin-bottom: 12px;
+                margin-top: 0;
+            }
+
+            .img-container {
+                margin: 12px 0;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                margin: 12px 0;
+                border-radius: 8px;
+            }
+
+            .img-explanation {
+                padding: 12px;
+                border-left: 3px solid #764ba2;
+                margin-top: 12px;
+                font-size: 0.85em;
+            }
+
+            .img-explanation h5 {
+                font-size: 0.85em;
+                margin-bottom: 8px;
+                margin-top: 0;
+            }
+
+            .subsection {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+
+            .insight-box {
+                padding: 15px;
+                margin: 15px 0;
+                font-size: 0.85em;
+            }
+
+            footer {
+                padding: 20px 15px;
+            }
+
+            footer p {
+                font-size: 0.8em;
+                margin-bottom: 6px;
+            }
+        }
+
+        /* Small Mobile (less than 360px) */
+        @media (max-width: 360px) {
+            header h1 {
+                font-size: 1.3em;
+            }
+
+            header p {
+                font-size: 0.85em;
+            }
+
+            h2 {
+                font-size: 1.15em;
+            }
+
+            h4 {
+                font-size: 0.9em;
+            }
+
+            p {
+                font-size: 0.85em;
+            }
+
+            nav a {
+                font-size: 0.75em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>📊 Empathy Analysis Report</h1>
+            <p>Comprehensive Visual Guide: All Diagrams & In-Depth Explanations</p>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav>
+            <a href="#section-overview">Overview & Foundation</a>
+            <a href="#section-reliability">Reliability Analysis</a>
+            <a href="#section-distribution">Score Distribution</a>
+            <a href="#section-dispersion">Empathy Dispersion</a>
+            <a href="#section-indices">Empathy Indices</a>
+            <a href="#section-bot-design">Bot Design</a>
+            <a href="#section-directions">Design Directions</a>
+            <a href="#section-recommendations">Recommendations</a>
+            <a href="#section-conclusions">Conclusions</a>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <!-- SECTION 1: OVERVIEW & FOUNDATION -->
+            <section id="section-overview">
+                <h2>📋 Overview & Foundation</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 1: Study Overview & Participant Flow</h4>
+                    <div class="img-container">
+                        <img src="1.png" alt="Research Overview - Toronto Empathy Questionnaire">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>Figure 1 visualizes the foundational study design: 110 participants completed the 25-item Toronto Empathy Questionnaire (TEQ), with responses collected on a 1–5 Likert scale. The diagram traces the data flow from participant recruitment through initial coding and preparation for statistical analysis. You see the participant demographics, the TEQ item structure, and the basic data collection timeline. This establishes the scope and credibility of the entire research—understanding who participated and how helps readers trust the findings. The figure serves as a roadmap showing where subsequent analyses fit within the larger study framework.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 2: Data Collection & Response Timeline</h4>
+                    <div class="img-container">
+                        <img src="2.png" alt="Data Collection Process">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This timeline shows the step-by-step data collection workflow. It details when and how responses were gathered, any screening or screening criteria applied, and the data preparation steps. By showing readers the chronological process—from initial recruitment to survey administration to data cleaning—this figure builds confidence that responses were handled systematically and ethically. Readers learn whether data was backdated, collected in batches, or continuously accumulated, and what quality checks were performed. A transparent timeline demonstrates rigorous methodology and reduces concerns about cherry-picked or biased data.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 3: TEQ Data Processing Pipeline</h4>
+                    <div class="img-container">
+                        <img src="3.png" alt="TEQ Data Processing Pipeline">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This diagram breaks down the technical pipeline for converting raw TEQ responses into analyzable empathy scores. It shows response standardization (cleaning text, removing duplicates), numerical mapping (converting "Never"–"Always" into 1–5 scores), reverse-scoring of negatively-worded items (so all scores load in the same direction), and missing-value handling (deciding how to treat incomplete responses). Understanding this pipeline is critical because any error in processing affects all downstream analyses. For readers unfamiliar with quantitative methods, this visual explanation demystifies the transition from raw survey data to clean datasets ready for statistical testing. It demonstrates that researchers carefully preserved data integrity at each step.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: RELIABILITY ANALYSIS -->
+            <section id="section-reliability">
+                <h2>✅ Reliability Analysis</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 4: Cronbach's Alpha & Overall Scale Reliability</h4>
+                    <div class="img-container">
+                        <img src="4.png" alt="Cronbach's Alpha Analysis">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>Cronbach's Alpha measures internal consistency—whether all 25 TEQ items consistently measure the same underlying construct (empathy). This figure shows the overall alpha coefficient (0.762) and likely displays how each item contributes to this value. An alpha of 0.762 falls into the "good" range (above 0.70 but below 0.85), indicating the scale is reliable without redundancy. The visualization helps readers see which items strengthen or weaken reliability, giving them confidence that the scale validly measures empathy across diverse participants. Clinical and healthcare teams rely on this statistic to decide whether TEQ screening is trustworthy for patient assessment. The figure answers the critical question: "Are we actually measuring empathy reliably?"</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 5: Item-Level Performance & Weak Performers</h4>
+                    <div class="img-container">
+                        <img src="5.png" alt="Item-Level Performance Analysis">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>While Figure 4 shows overall reliability, Figure 5 zooms in on individual items, identifying which specific questions underperform. It likely displays item-total correlations (how each item correlates with the total score) and possibly "alpha if item deleted" (how alpha would change if that item were removed). Five items showed suboptimal performance—particularly "Other people's misfortunes do not disturb me" with a correlation of only 0.162. This low correlation suggests the item either poorly measures empathy or is misunderstood by respondents. For teams implementing TEQ-based profiling in healthcare settings, this figure is actionable: it recommends which items need revision before full-scale deployment. Fixing or removing these problematic items could improve overall scale reliability to 0.767+, enhancing predictive accuracy for bot interaction strategies.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: DISTRIBUTION ANALYSIS -->
+            <section id="section-distribution">
+                <h2>📊 Score Distribution Analysis</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 6: Total Empathy Score Distribution & Histogram</h4>
+                    <div class="img-container">
+                        <img src="6.png" alt="Distribution Histogram and Analysis">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This histogram displays the frequency distribution of total empathy scores across all 110 participants. Most participants scored above the midpoint (mean = 61.78 on the 0–125 scale), concentrated toward the higher end. The distribution is approximately normal (bell-shaped) with a slight left skew (tail toward lower values), indicating slightly more participants showed high empathy. The shape suggests that empathy levels vary naturally in the population but cluster around "higher empathy." This distribution is critical for statistical inference: it justifies using parametric tests (like t-tests) while also suggesting caution about extreme values. For healthcare applications, the left skew may reflect either genuinely high empathy in this sample or potential social desirability bias (people answering to appear caring rather than answering honestly).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: EMPATHY DISPERSION -->
+            <section id="section-dispersion">
+                <h2>⚡ Empathy Consistency & Dispersion</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 7: Total Empathy vs. Response Dispersion Quadrants</h4>
+                    <div class="img-container">
+                        <img src="7.png" alt="Empathy Consistency Profiles and User Quadrants">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This scatter plot maps each participant as a point, with total empathy score on the x-axis and response dispersion (emotional consistency) on the y-axis. The plot reveals four quadrants: high empathy + high consistency (top-right), high empathy + low consistency (top-left), low empathy + high consistency (bottom-right), and low empathy + low consistency (bottom-left). The near-zero correlation between axes means empathy level and consistency are independent traits—knowing someone's empathy score tells you almost nothing about their emotional volatility. This is a profound insight for bot design: a highly empathetic patient might have unstable emotional responses, requiring patient, exploratory pacing. Conversely, a logically-minded, emotionally reserved patient might have perfect consistency, requiring efficient, fact-based communication. The quadrant grouping enables user segmentation for targeted design strategies.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 8: Recommended Pacing Strategies by Quadrant</h4>
+                    <div class="img-container">
+                        <img src="8.png" alt="Response Pacing Strategy Visualization">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>Building on Figure 7's quadrants, Figure 8 prescribes specific bot interaction pacing for each user type. Highly volatile users (top row, regardless of empathy level) receive slower, more validating, exploratory pacing—the bot checks in frequently ("How are you feeling?"), uses open-ended questions, and celebrates understanding emotional nuance. Highly consistent users (bottom row) receive efficient pacing—the bot moves confidently forward, structures information clearly, and respects their preference for decisiveness. This figure operationalizes the core concept: pacing is not one-size-fits-all but rather tuned to individual consistency. Healthcare teams use this diagram to build decision trees that route users to appropriate conversational templates at runtime, automatically selecting whether to ask "Tell me more about your feelings" or "Here are the next steps."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: EMPATHY INDICES -->
+            <section id="section-indices">
+                <h2>🧠 Emotional & Cognitive Empathy Indices</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 9: Emotional Responsiveness Index Distribution</h4>
+                    <div class="img-container">
+                        <img src="9.png" alt="Emotional Responsiveness Index Visualization">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This figure displays the distribution of emotional (affective) empathy—the capacity to share and resonate with others' feelings at a gut level. Participants scoring high on this dimension report feeling moved by others' suffering, getting teary, and experiencing strong emotional protective urges. The histogram (or similar visualization) shows how participants cluster: where the distribution peaks tells us whether this is a population of naturally emotionally-responsive people or whether emotional empathy varies widely. For bot design, this dimension is critical because highly emotionally-responsive users crave emotional validation and resonance in every interaction. A bot that ignores emotional content frustrates them. Conversely, those low on this dimension may find excessive emotional language manipulative or irrelevant. This figure guides designers in calibrating emotional tone: turning it up for emotionally-responsive users and down for those more cognitive or reserved.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 10: Cognitive Empathy & Perspective-Taking Index</h4>
+                    <div class="img-container">
+                        <img src="10.png" alt="Cognitive Empathy and Perspective-Taking Analysis">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This figure shows the distribution of cognitive empathy—the ability to intellectually understand others' perspectives, predict their reactions, and read emotions accurately. Unlike emotional empathy (which is felt), cognitive empathy is reasoned. Participants high on this scale are natural mind-readers, understanding complex emotional situations and adapting their communication accordingly. This figure reveals whether cognitive empathy is common in the sample or specialized. Importantly, many people are high in cognitive but low in emotional empathy (think analytical clinicians or engineers who understand patients' needs intellectually but lack emotional resonance). Conversely, some are high in emotional but low in cognitive empathy (deeply feeling but struggling to explain why). By separating these dimensions, Figure 10 enables highly personalized bot strategies: cognitive-dominant users benefit from nuanced explanations showing you understand their unique situation; emotion-dominant users benefit from validation showing you feel their experience with them.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 11: Dual-Pathway Communication Strategy</h4>
+                    <div class="img-container">
+                        <img src="11.png" alt="Dual-Pathway Communication Strategy">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This diagram illustrates how to combine emotional and cognitive empathy in a single response. It shows two communication pathways: an emotional pathway (leading with feelings, validation, resonance) and a cognitive pathway (leading with logic, reasoning, evidence). Effective bot communication doesn't choose one—it integrates both. For a patient worried about surgery, the emotional pathway validates fear: "This is a big decision; it's natural to feel anxious." The cognitive pathway provides reassurance through logic: "Research shows this procedure has a 95% success rate in your demographic." The figure demonstrates how to layer these pathways so users feel understood emotionally while receiving intellectually solid reassurance. By alternating or weaving these pathways based on user profile, bots create comprehensive empathy that both feels human and delivers trust through evidence.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 12: Bot Pathway Selection Flowchart</h4>
+                    <div class="img-container">
+                        <img src="12.png" alt="User Pathway Selection and Adaptation">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This flowchart operationalizes Figures 9–11 by showing how a bot decides which pathway to use in real time. It presents decision nodes: "Is this user high in emotional empathy?" "Is this user high in cognitive empathy?" Based on answers, the bot routes to the appropriate response template. For example: high emotional + low cognitive = prioritize validation then explain simply; high cognitive + low emotional = prioritize logic then subtly acknowledge feelings; high both = seamlessly integrate both; low both = be direct and efficient without excess emotional language. This flowchart is a blueprint for engineering teams implementing adaptive bots. It shows exactly where to insert user profile data and how to trigger conditional logic that activates the right voice and tone. Without Figure 12, abstract concepts (dual pathways) become concrete implementation paths.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: BOT DESIGN IMPLICATIONS -->
+            <section id="section-bot-design">
+                <h2>🤖 Healthcare Bot Design Strategy</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 13: User Segmentation Matrix & Bot Strategies</h4>
+                    <div class="img-container">
+                        <img src="13.png" alt="User Segmentation Matrix Visualization">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This matrix is the practical guide for healthcare teams implementing empathy-based design. It maps the four user quadrants (from Figures 7–8) to specific bot strategies. Each cell describes the user profile and a concise strategy: for highly empathetic, consistent users ("Golden" profile—top right), use collaborative, warm, confident communication; for highly empathetic but volatile users ("Complex" profile—top left), use validating, exploratory, patient communication; for low empathy but consistent users ("Efficient"—bottom right), use direct, fact-based, solution-focused communication; for low empathy and volatile users ("Uncertain"—bottom left), use cautious, non-threatening, stepwise communication. Teams use this matrix as a checklist: after classifying a user via TEQ screening, they look up the cell and apply the recommended strategy. It's a decision table that transforms research into practice.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 14: UX Laws Applied to Empathy-Aware Design</h4>
+                    <div class="img-container">
+                        <img src="14.png" alt="Laws of UX Applied to Empathy-Aware Design">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This figure bridges empathy research and established UX design principles. It maps classic UX laws—Fitts's Law (distance affects interaction time), Hick's Law (too many choices overwhelm users), Jakob's Law (users expect familiarity), Peak-End Rule (memorable moments matter), Von Restorff Effect (distinctive items stand out)—to empathy-aware design decisions. For instance, Fitts's Law suggests that volatile users benefit from larger buttons and shorter distances (reducing cognitive load). Hick's Law suggests emotion-dominant users should see fewer choices presented at once (avoid overwhelming). Jakob's Law means maintaining consistent bot tone and greeting patterns within each empathy profile. This figure educates designers that good empathy design isn't inventing new principles—it's intentionally applying proven UX wisdom with empathy profiles as the organizing factor. It shows that empathy and usability are complementary, not competing goals.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 15: Three-Phase Implementation Roadmap</h4>
+                    <div class="img-container">
+                        <img src="15.png" alt="Implementation Roadmap and Phases">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>Implementation of empathy-aware bot features is complex. This roadmap breaks it into manageable phases: Phase 1 (MVP) focuses on basic TEQ profiling using simplified 5–7 item screening during onboarding, binary high/low dispersion detection, and simple tone switching (warm vs. direct). Phase 2 (Advanced) adds dimensional analysis (measuring emotional vs. cognitive separately), dynamic pacing adjustments (slowing down mid-conversation if volatility is detected), and real-time consistency monitoring. Phase 3 (ML-Powered) incorporates machine learning to predict user needs before they're asked, adaptive therapy frameworks tailored to empathy profiles, and continuous improvement of classification accuracy. This phased approach acknowledges that perfect empathy design is complex but unnecessary upfront—Phase 1 improvements (tone matching) deliver value immediately, while later phases add sophistication. Teams use this to plan sprints, allocate resources, and communicate progress to stakeholders.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 16: Bot Adaptation Architecture & Decision Framework</h4>
+                    <div class="img-container">
+                        <img src="16.png" alt="Bot Adaptation Strategy Framework">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This architecture diagram shows the technical components enabling empathy-based adaptation at runtime. It displays data flow: user input → sentiment analysis → empathy profile lookup → decision engine → response template selection → message generation → delivery. The diagram likely shows feedback loops: after each user response, the bot updates its understanding of that user's consistency and emotional tone, potentially switching strategies mid-conversation. For engineers, this is a blueprint for system design—shows where NLP modules (sentiment analysis), database lookups (profile storage), and conditional logic (decision trees) fit together. For product managers, it demonstrates the infrastructure required and potential bottlenecks (e.g., real-time sentiment analysis latency). This figure answers the question: "What does an empathy-aware bot architecture actually look like?"</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 17: Safety Monitoring & Crisis Escalation Protocol</h4>
+                    <div class="img-container">
+                        <img src="17.png" alt="Safety Monitoring and Escalation Protocol">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>Empathy-aware healthcare bots must be safe. This figure shows the monitoring logic: the bot continuously scans user inputs for distress signals (suicidal ideation, severe anxiety, incoherent emotional escalation). When distress exceeds thresholds, the bot automatically escalates to human clinicians. The diagram shows the escalation protocol: severity level → alert routing → clinician notification → timeout requirements (e.g., human response within 2 minutes). It illustrates that responsible AI doesn't claim to handle crises alone—it detects them and routes to humans fast. For healthcare teams, this figure is legally and ethically critical: it demonstrates that the bot "knows its limits" and has guardrails. For users, seeing this protocol documented provides confidence that a bot won't abandon them if distress emerges. This is not a cold, detached system—it's programmed to recognize when human care is needed and activate it immediately.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: DESIGN DIRECTIONS -->
+            <section id="section-directions">
+                <h2>🎨 Strategic Design Directions</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 18: Emotional Flexibility Architecture</h4>
+                    <div class="img-container">
+                        <img src="18.png" alt="Emotional Flexibility Architecture Diagram">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>Rather than building separate bots for different users, this diagram shows how to build one flexible bot with modular templates. For each core interaction (greeting, information delivery, problem-solving, closing), the bot maintains multiple tone variants: (A) warm and deeply empathetic, (B) balanced and professional, (C) direct and clinical. At runtime, the user's empathy profile determines which variant loads. A simple switch or conditional statement selects the template. This architecture is elegant because it avoids code duplication and maintains consistency while allowing personalization. For teams with limited resources, it's powerful: you write each interaction once but present it in three voices. For users, they experience a bot that feels personalized without the creepiness of overly-tailored language. The diagram demystifies how personalization scales: through modular, data-driven template selection rather than AI magic.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 19: Real-Time Consistency Monitoring System</h4>
+                    <div class="img-container">
+                        <img src="19.png" alt="Real-Time Consistency Monitoring System">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>Initial empathy profiling happens once (during onboarding), but users change emotionally within conversations. This diagram shows real-time monitoring: as a user interacts, the bot analyzes tone shifts, contradiction detection (saying "I'm fine" then "I'm terrified"), and consistency variance. If sudden shifts are detected, the bot adapts mid-conversation. For example, if a "consistent" user suddenly expresses contradictory feelings, the bot switches to validating, exploratory mode. If a "volatile" user becomes suddenly clear and decisive, the bot acknowledges this shift and matches the new tone. This creates a responsive, not rigid, experience. The diagram shows the bot "listening" not just to content but to emotional texture, flexibly reacting rather than mechanically following initial classifications. For users, this means the bot doesn't pigeonhole them—it adapts as they change within the same conversation.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 20: Dimensional Communication Routing Framework</h4>
+                    <div class="img-container">
+                        <img src="20.png" alt="Dimensional Communication Routing Framework">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This shows how to route specific messages through emotional or cognitive channels. When deciding how to phrase information, the bot asks: "Is this user high in emotional empathy?" and "Is this user high in cognitive empathy?" Based on answers, it selects phrasing. For a patient with low cognitive but high emotional empathy, the bot says: "I know this feels scary. Let me help you understand step by step what to expect—understanding will help calm your worry." For a patient with high cognitive but low emotional empathy, the bot says: "Research shows this procedure has three phases. Each phase has defined outcomes and timelines [details]. This structured approach often helps patients feel more in control." The framework treats communication as a dynamic routing problem: content is the same, but the path to presenting it changes based on user empathy profile. This maximizes comprehension and reduces mismatches (like telling a logically-minded patient "I feel your pain" when they wanted facts).</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 21: Progressive Disclosure Information Pacing</h4>
+                    <div class="img-container">
+                        <img src="21.png" alt="Progressive Disclosure Information Pacing Strategy">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>Information overload harms users, especially those emotionally volatile. This diagram shows how pacing varies by user consistency. Highly volatile users receive 1–2 key points per turn, with lots of white space, frequent check-ins ("Does this make sense?"), and explicit invitations to ask questions. The bot moves slowly, validating understanding before advancing. Highly consistent users receive larger information chunks, structured format (bullet points, clear hierarchy), and efficient delivery—the bot assumes they prefer to move fast. This applies progressive disclosure (showing information at a pace users can absorb) with empathy-based pacing rules. For designers, it answers: "How much do I show at once?" For developers, it translates to variables controlling information block size and check-in frequency. For users, it means never feeling rushed or disrespected—some want a leisurely conversation, others want rapid throughput, and the bot recognizes both needs.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 22: Information Hierarchy by Empathy Profile</h4>
+                    <div class="img-container">
+                        <img src="22.png" alt="Information Hierarchy and Content Prioritization">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>When presenting complex information (e.g., medical diagnosis), hierarchy matters: what you show first anchors understanding of everything after. This diagram shows how to reorder content by empathy profile. For emotionally responsive users: lead with emotional impact and personal relevance ("This affects your quality of life"), then human stories ("Many patients feel this way initially"), then clinical facts. For cognitively focused users: lead with clinical data and research evidence ("Studies show..."), then logical implications ("This means..."), then personal adaptation. For users high in both: seamlessly integrate emotional and logical threads. For users low in both: be direct and solution-focused—show only essential facts and next steps. By reorganizing content hierarchy rather than changing content, the bot respects each user's mental model. An emotionally-focused person needs to feel understood before accepting facts. A logically-focused person needs evidence before emotional language resonates as genuine rather than manipulative.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: RECOMMENDATIONS -->
+            <section id="section-recommendations">
+                <h2>💼 Recommendations & Implementation</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 23: TEQ-Based Profiling Onboarding Implementation</h4>
+                    <div class="img-container">
+                        <img src="23.png" alt="Empathy Assessment and Profiling Implementation">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>For teams ready to deploy empathy profiling, this figure is a practical checklist. It shows the onboarding flow: introduce screening decision, present simplified TEQ items (recommending 5–7 instead of full 25 for speed), scoring logic, profile classification, and secure storage. The diagram addresses implementation concerns: How long does screening take? (2–3 minutes optimal.) How is data stored? (Encrypted, with user consent.) When is profile refreshed? (Every session or on-demand.) What if users skip screening? (Default to balanced approach; offer profiling later.) By walking teams through these details, Figure 23 removes ambiguity and reduces rollout friction. It answers the question every product manager asks: "What does this actually look like when we roll it out?"</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 24: Clinical Validation Metrics & Outcomes</h4>
+                    <div class="img-container">
+                        <img src="24.png" alt="Clinical Validation Metrics and Outcomes Framework">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>The research is promising, but deployment requires proof of impact. This figure outlines the metrics teams should track in pilots: patient-perceived care and trust (via validated questionnaires), information retention (recall tests or task completion), health behavior adherence (medication compliance, appointment keeping), anxiety reduction (before/after scales), and reduced clinician burden (time saved by bot handling routine questions). The diagram likely shows measurement timing (baseline, post-interaction, follow-up) and statistical methods. For healthcare leadership, this figure justifies pilot investment: "We're tracking real outcomes, not just engagement metrics." For research teams, it's a protocol guide ensuring rigorous validation. Without specified metrics, pilots become anecdotal ("Seemed to work"). With Figure 24, they become evidence-based ("We improved adherence by 20%, anxiety by 15%").</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 9: CONCLUSIONS -->
+            <section id="section-conclusions">
+                <h2>🎯 Conclusions & Future Directions</h2>
+
+                <div class="figure-card">
+                    <h4>Figure 25: Research Findings Summary & Key Takeaways</h4>
+                    <div class="img-container">
+                        <img src="25.png" alt="Research Findings Summary and Key Takeaways">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This figure is a visual executive summary for stakeholders with five minutes to understand the research. It likely displays key statistics (TEQ alpha = 0.762, mean empathy score = 61.78, four user quadrants identified) and the core insight: empathy and consistency are independent, creating four distinct user types requiring tailored strategies. The diagram visually encodes the main findings so readers grasp the study's value without reading 50 pages. For conference presentations, investor pitches, or quickly briefing clinical teams, Figure 25 is invaluable. It answers: "Why does this research matter?" in a single visual. The figure often includes icons or color-coding for the four user types, making the taxonomy memorable and actionable.</p>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <h4>Figure 26: Future Research & Development Roadmap</h4>
+                    <div class="img-container">
+                        <img src="26.png" alt="Future Directions and Research Roadmap">
+                    </div>
+                    <div class="img-explanation">
+                        <h5>What This Diagram Shows</h5>
+                        <p>This research opens doors to future work. The diagram likely shows recommended next steps across multiple dimensions: cross-cultural validation (does empathy profiling work across cultures?), clinical outcome studies (does empathy-adapted bot engagement actually improve health?), dynamic profiling (do empathy profiles shift over time?), biomarker integration (correlating TEQ with physiological measures), ethical framework development (how do we prevent misuse of empathy profiling?), and scalability studies (can these approaches work in underserved populations?). For researchers, Figure 26 is an agenda. For organizations planning longitudinal studies, it's a roadmap. For teams confident in Phase 1-2 implementation, Figure 26 motivates continued investment: "This is just the beginning." It positions the current work as foundational rather than final, inviting the field to build on these discoveries.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p><strong>Empathy Analysis Report — Diagrams & In-Depth Explanations</strong></p>
+            <p>A visual guide to empathy profiling, consistency analysis, and adaptive healthcare bot design</p>
+            <p style="margin-top: 20px; opacity: 0.8;">© 2025 Research Project | Based on Toronto Empathy Questionnaire (TEQ) methodology</p>
+        </footer>
+    </div>
+</body>
+</html>

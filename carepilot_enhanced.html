@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empathy Analysis - Enhanced Research Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           RESET & GLOBAL STYLES
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(44, 62, 80, 0.15);
+            overflow: hidden;
+        }
+
+        /* ========================================
+           HEADER & NAVIGATION
+           ======================================== */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            border-bottom: 4px solid #667eea;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        /* ========================================
+           RESEARCH HIGHLIGHTS
+           ======================================== */
+        .highlights {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .highlight-card h3 {
+            color: #667eea;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .highlight-card .value {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #764ba2;
+            margin-bottom: 5px;
+        }
+
+        .highlight-card p {
+            font-size: 0.85em;
+            color: #7f8c8d;
+        }
+
+        /* ========================================
+           MAIN CONTENT
+           ======================================== */
+        main {
+            padding: 50px 40px;
+        }
+
+        section {
+            margin-bottom: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #ecf0f1;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.1);
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+           ======================================== */
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #764ba2;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        h2:hover {
+            color: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 28px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: #2c3e50;
+        }
+
+        /* ========================================
+           SUBSECTIONS & CONTAINERS
+           ======================================== */
+        .subsection {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+            position: relative;
+        }
+
+        .subsection::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .subsection h3 {
+            margin-top: 0;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+            font-size: 0.9em;
+            color: #2c3e50;
+        }
+
+        .key-findings {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3e0 100%);
+            padding: 24px;
+            border-radius: 8px;
+            border-left: 4px solid #f39c12;
+            margin: 20px 0;
+        }
+
+        .key-findings h4 {
+            color: #d68910;
+            margin-top: 0;
+        }
+
+        /* ========================================
+           STAT CARDS & METRICS
+           ======================================== */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .stat-card:hover {
+            border-color: #ecf0f1;
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .stat-card .value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .label {
+            font-size: 0.8em;
+            font-weight: 600;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-card.secondary {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .stat-card.success {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .stat-card.warning {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        /* ========================================
+           RANKED ATTRIBUTES
+           ======================================== */
+        .ranked-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .ranked-item {
+            background: linear-gradient(90deg, #667eea15 0%, #764ba215 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .ranked-item:hover {
+            background: linear-gradient(90deg, #667eea25 0%, #764ba225 100%);
+            transform: translateX(8px);
+        }
+
+        .rank-number {
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .ranked-item.medium .rank-number {
+            background: #f39c12;
+        }
+
+        .ranked-item.low .rank-number {
+            background: #27ae60;
+        }
+
+        .rank-content h4 {
+            margin: 0 0 5px 0;
+        }
+
+        .rank-content p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        /* ========================================
+           DESIGN DIRECTION
+           ======================================== */
+        .design-direction {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .design-direction h4 {
+            color: #764ba2;
+            margin-top: 0;
+        }
+
+        /* ========================================
+           RECOMMENDATION
+           ======================================== */
+        .recommendation {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .recommendation h4 {
+            color: #764ba2;
+            margin-top: 0;
+        }
+
+        /* ========================================
+           TABLES
+           ======================================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+            color: #2c3e50;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafbfc;
+        }
+
+        /* ========================================
+           SPECIFICATIONS
+           ======================================== */
+        .specifications {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+            margin: 25px 0;
+        }
+
+        .specifications h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .spec-item {
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+        }
+
+        .spec-label {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 5px;
+        }
+
+        .spec-value {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        /* ========================================
+           LISTS & CONTENT
+           ======================================== */
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 40px;
+            border-top: 4px solid #667eea;
+        }
+
+        footer p {
+            color: #ecf0f1;
+            margin-bottom: 8px;
+        }
+
+        /* ========================================
+           IMAGE STYLING
+           ======================================== */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            margin: 30px auto;
+            display: block;
+        }
+
+        .img-caption {
+            text-align: center;
+            font-size: 0.92em;
+            color: #7f8c8d;
+            margin-top: 8px;
+            margin-bottom: 24px;
+        }
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (max-width: 768px) {
+            header {
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            main {
+                padding: 30px 20px;
+            }
+
+            section {
+                padding: 25px 20px;
+            }
+
+            .highlight-card {
+                padding: 20px;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>📊 Empathy Analysis Report</h1>
+            <p>Comprehensive Research Report on Empathy Measurement & Healthcare Bot Design Implications</p>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#reliability">Scale Reliability</a>
+            <a href="#distribution">Score Distribution</a>
+            <a href="#dispersion">Empathy Dispersion</a>
+            <a href="#empathy-indices">Empathy Indices</a>
+            <a href="#bot-design">Bot Design Implications</a>
+            <a href="#design-directions">Design Directions</a>
+            <a href="#recommendations">Recommendations</a>
+            <a href="#conclusions">Conclusions</a>
+        </nav>
+
+        <!-- RESEARCH HIGHLIGHTS -->
+        <section class="highlights">
+            <div class="highlight-card">
+                <h3>📊 Cronbach's Alpha</h3>
+                <p><strong>0.762</strong> - Good internal consistency of the Toronto Empathy Questionnaire, indicating reliable empathy measurement</p>
+            </div>
+            <div class="highlight-card">
+                <h3>📈 Mean Empathy Score</h3>
+                <p><strong>61.78</strong> - Participants demonstrate relatively high empathy levels with slight left-skewed distribution</p>
+            </div>
+            <div class="highlight-card">
+                <h3>⚖️ Empathy Consistency</h3>
+                <p><strong>Dispersion analyzed</strong> - Individual response variability identifies users requiring adaptive bot pacing strategies</p>
+            </div>
+            <div class="highlight-card">
+                <h3>🎯 Healthcare Context</h3>
+                <p><strong>Actionable insights</strong> - Empathy metrics directly inform conversational strategies for patient-centered healthcare bots</p>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <!-- SECTION 1: OVERVIEW -->
+            <section id="overview">
+                <h2>📋 Executive Overview</h2>
+                
+                <div class="subsection">
+                    <h3>Research Objective</h3>
+                    <p>This comprehensive analysis examines empathy measurement using the Toronto Empathy Questionnaire (TEQ) to develop adaptive, empathy-aware healthcare bot designs. The research investigates:</p>
+                    <ul style="margin: 15px 0 20px 20px; color: #444;">
+                        <li>Scale reliability and validity for empathy assessment</li>
+                        <li>Individual differences in empathic consistency vs. volatility</li>
+                        <li>Healthcare bot interaction strategies based on empathy profiles</li>
+                        <li>Design directions for patient-centered AI systems</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>Research Context</h3>
+                    <p>In healthcare settings, empathy is foundational to patient trust, adherence, and outcomes. An AI bot that adapts its conversational style based on a patient's empathic profile can:</p>
+                    <ul style="margin: 15px 0 20px 20px; color: #444;">
+                        <li>Establish psychological safety and rapport</li>
+                        <li>Respond appropriately to emotional volatility</li>
+                        <li>Tailor information delivery to emotional readiness</li>
+                        <li>Enhance user engagement and therapeutic effectiveness</li>
+                    </ul>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="value">110</div>
+                        <div class="label">Participants</div>
+                    </div>
+                    <div class="stat-card secondary">
+                        <div class="value">25</div>
+                        <div class="label">TEQ Items</div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="value">1-5 Scale</div>
+                        <div class="label">Response Format</div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="value">2 Dimensions</div>
+                        <div class="label">Empathy Types</div>
+                    </div>
+                </div>
+
+                <img src="1.png" alt="Research Overview - Toronto Empathy Questionnaire">
+                <p class="img-caption">Figure 1 — Study overview: 110 people completed the 25-item TEQ. This diagram shows the sample size and the basic flow from data collection to analysis. Use it to understand the study scope and where other figures fit.</p>
+
+                <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                    <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                    <p><strong>What does all this research setup actually mean for you?</strong></p>
+                    <ul>
+                        <li><strong>Empathy isn't one-size-fits-all:</strong> People experience empathy differently—some are naturally more empathetic, others less so. Healthcare bots need to recognize this diversity.</li>
+                        <li><strong>We're measuring what matters:</strong> The Toronto Empathy Questionnaire is a proven, scientifically-validated tool that accurately captures how empathetic someone is.</li>
+                        <li><strong>Your responses matter:</strong> 110 real participants gave honest answers to 25 questions about their emotional understanding and compassion for others.</li>
+                        <li><strong>This shapes better AI:</strong> By understanding empathy patterns, we can design healthcare AI that feels more human, appropriate, and genuinely helpful.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION: GRAPH EXPLANATIONS -->
+            <section id="graph-explanations">
+                <h2>📚 Graph Explanations (Plain Language)</h2>
+                <p class="subsection" style="padding:0; border-left:0; background:transparent; box-shadow:none;">Below are short, plain-language explanations for each figure used in this report. Use these when sharing results with non-technical readers.</p>
+                <ul style="margin-top:18px; color:#444;">
+                    <li><strong>Figure 1:</strong> Overview of the study — shows how 110 participants answered 25 TEQ items and the main data flow.</li>
+                    <li><strong>Figure 2:</strong> Data collection timeline and process — how responses were gathered and cleaned.</li>
+                    <li><strong>Figure 3:</strong> TEQ data processing pipeline — steps like mapping, reverse-scoring, and imputation.</li>
+                    <li><strong>Figure 4:</strong> Cronbach's Alpha visualization — shows overall alpha = 0.762 and item contributions.</li>
+                    <li><strong>Figure 5:</strong> Item-level performance — highlights items with low correlation and suggested revisions.</li>
+                    <li><strong>Figure 6:</strong> Score distribution histogram — shows most people score towards the higher end with a slight left skew.</li>
+                    <li><strong>Figure 7:</strong> Scatter of total score vs. dispersion — identifies four user quadrants (consistency × empathy).</li>
+                    <li><strong>Figure 8:</strong> Pacing strategy diagram — links each quadrant to recommended bot pacing and style.</li>
+                    <li><strong>Figure 9:</strong> Emotional responsiveness visualization — shows affective empathy patterns in the sample.</li>
+                    <li><strong>Figure 10:</strong> Cognitive empathy visualization — shows perspective-taking scores and distribution.</li>
+                    <li><strong>Figure 11:</strong> Dual-pathway communication diagram — explains combining emotional and logical responses.</li>
+                    <li><strong>Figure 12:</strong> User pathway flowchart — how the bot selects a response path based on profile.</li>
+                    <li><strong>Figure 13:</strong> User segmentation matrix — maps four profile types to characteristics and strategies.</li>
+                    <li><strong>Figure 14:</strong> UX principles applied — visual mapping of Laws of UX to empathy-aware design.</li>
+                    <li><strong>Figure 15:</strong> Implementation roadmap — shows phases from MVP to ML-driven personalization.</li>
+                    <li><strong>Figure 16:</strong> Bot adaptation framework — architecture for choosing tone, pacing, and escalation.</li>
+                    <li><strong>Figure 17:</strong> Safety monitoring flow — shows detection and escalation for emotional distress.</li>
+                    <li><strong>Figure 18:</strong> Emotional flexibility architecture — modular response templates for different tones.</li>
+                    <li><strong>Figure 19:</strong> Real-time monitoring system — how the bot detects volatility and adapts mid-conversation.</li>
+                    <li><strong>Figure 20:</strong> Dimensional routing framework — routes messages based on emotional vs cognitive strengths.</li>
+                    <li><strong>Figure 21:</strong> Progressive disclosure diagram — shows pacing and how much information to give per user type.</li>
+                    <li><strong>Figure 22:</strong> Information hierarchy visual — prioritizes what to show first for different profiles.</li>
+                    <li><strong>Figure 23:</strong> Profiling implementation steps — practical steps to collect, store, and use TEQ-based profiles.</li>
+                    <li><strong>Figure 24:</strong> Clinical validation metrics — suggested outcomes and measures to test effectiveness.</li>
+                    <li><strong>Figure 25:</strong> Findings summary infographic — quick recap of main results and actionable points.</li>
+                    <li><strong>Figure 26:</strong> Future directions roadmap — recommended next research and development steps.</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 2: METHODOLOGY -->
+            <section id="methodology">
+                <h2>🔬 Research Methodology</h2>
+                
+                <div class="subsection">
+                    <h3>Data Collection & Preparation</h3>
+                    <p>The Toronto Empathy Questionnaire (TEQ) was administered to 110 participants, measuring dispositional empathy across 25 items rated on a 5-point Likert scale (Never, Rarely, Sometimes, Often, Always).</p>
+
+                    <img src="2.png" alt="Data Collection Process">
+                    <p class="img-caption">Figure 2 — Data collection steps and timeline. Shows how responses were gathered, screened, and cleaned before analysis. This helps readers trust the dataset and the results that follow.</p>
+                </div>
+
+                <div class="specifications">
+                    <h4>TEQ Item Processing Pipeline</h4>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Response Standardization</div>
+                            <div class="spec-value">Cleaned & normalized text responses</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Numerical Mapping</div>
+                            <div class="spec-value">1-5 scale conversion (Never→1, Always→5)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Reverse Scoring</div>
+                            <div class="spec-value">8 negatively-phrased items inverted</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Missing Value Handling</div>
+                            <div class="spec-value">Mode imputation to preserve data integrity</div>
+                        </div>
+                    </div>
+                </div>
+
+                <img src="3.png" alt="TEQ Data Processing Pipeline">
+                <p class="img-caption">Figure 3 — TEQ processing pipeline explained simply. Shows mapping of answers to numeric scores, reverse-scoring of negative items, and handling of missing values. Read this to know exactly how total empathy scores were calculated.</p>
+
+                <div class="subsection">
+                    <h3>Analytical Framework</h3>
+                    <div class="insight-box">
+                        <h4>Multi-Level Analysis Approach</h4>
+                        <ul>
+                            <li><strong>Scale-Level:</strong> Cronbach's Alpha for internal consistency</li>
+                            <li><strong>Item-Level:</strong> Item-total correlations and alpha-if-deleted analysis</li>
+                            <li><strong>Individual-Level:</strong> Total empathy scores and dispersion metrics</li>
+                            <li><strong>Dimensional:</strong> Emotional responsiveness vs. cognitive empathy indices</li>
+                            <li><strong>Distributional:</strong> Normality testing and profile characterization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                    <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                    <p><strong>How did we actually go about studying empathy?</strong></p>
+                    <ul>
+                        <li><strong>We asked real questions:</strong> The TEQ is a questionnaire with 25 carefully-written statements about emotional understanding. Some are straightforward, others are tricky (they test the opposite).</li>
+                        <li><strong>We cleaned the data thoroughly:</strong> We checked for people who didn't answer honestly or seriously, removed incomplete responses, and handled gaps carefully.</li>
+                        <li><strong>We analyzed at every level:</strong> We didn't just look at total scores—we examined individual questions, personality consistency, emotional dimensions, and distribution patterns.</li>
+                        <li><strong>We used proven statistical methods:</strong> All our analytical approaches are standard in psychology research, ensuring reliability and trustworthiness.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 3: RELIABILITY ANALYSIS -->
+            <section id="reliability">
+                <h2>✅ TEQ Scale Reliability & Validity</h2>
+                
+                <div class="subsection">
+                    <h3>Overall Cronbach's Alpha</h3>
+                    
+                    <div class="key-findings">
+                        <h4>💡 Alpha Coefficient: 0.762 - GOOD RELIABILITY</h4>
+                        <p><strong>Interpretation:</strong> The Cronbach's Alpha of 0.762 indicates <strong>good internal consistency</strong>, falling above the commonly accepted threshold of 0.70 for established research scales. This suggests items reliably measure a single underlying construct: empathy.</p>
+                        <ul>
+                            <li><span class="badge danger">0.60</span> Questionable reliability</li>
+                            <li><span class="badge warning">0.70</span> Acceptable for exploratory research</li>
+                            <li><span class="badge primary">0.762</span> <strong>Good reliability ← OUR RESULT</strong></li>
+                            <li><span class="badge success">0.85</span> Excellent reliability</li>
+                            <li><span class="badge info">0.92</span> Potential redundancy</li>
+                        </ul>
+                    </div>
+
+                    <img src="4.png" alt="Cronbach's Alpha Analysis">
+                    <p class="img-caption">Figure 4 — Cronbach's Alpha visualization (α = 0.762). Highlights which items support or weaken the scale's consistency. Use it to see whether the questionnaire reliably measures empathy.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>Item-Level Performance Analysis</h3>
+                    <p>Examining individual items reveals their contribution to overall scale reliability and identifies optimization opportunities.</p>
+                    
+                    <div class="key-findings">
+                        <h4>🎯 Items Requiring Revision</h4>
+                        <p>Five items showed <strong>below-optimal performance</strong> with low item-total correlations (< 0.30):</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item Description</th>
+                                    <th>Correlation</th>
+                                    <th>Alpha if Deleted</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>"Other people's misfortunes do not disturb me"</td>
+                                    <td><span class="badge danger">0.162</span></td>
+                                    <td>0.767</td>
+                                    <td>Priority revision</td>
+                                </tr>
+                                <tr>
+                                    <td>"Remain unaffected when close to me is happy"</td>
+                                    <td><span class="badge warning">0.291</span></td>
+                                    <td>0.763</td>
+                                    <td>Rephrase</td>
+                                </tr>
+                                <tr>
+                                    <td>"No sympathy for those causing own illness"</td>
+                                    <td><span class="badge warning">0.286</span></td>
+                                    <td>0.763</td>
+                                    <td>Rephrase</td>
+                                </tr>
+                                <tr>
+                                    <td>"Irritated when someone cries"</td>
+                                    <td><span class="badge warning">0.298</span></td>
+                                    <td>0.763</td>
+                                    <td>Clarify language</td>
+                                </tr>
+                                <tr>
+                                    <td>"Not interested in how others feel"</td>
+                                    <td><span class="badge warning">0.295</span></td>
+                                    <td>0.763</td>
+                                    <td>Rephrase</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="recommendation">
+                        <h4>✓ Optimization Strategy</h4>
+                        <p><strong>Highest priority:</strong> Revising or removing the item "Other people's misfortunes do not disturb me a great deal" would improve overall alpha to 0.767, the greatest achievable improvement. This item appears poorly aligned with the core empathy construct or is interpreted ambiguously by respondents.</p>
+                        <p><strong>Secondary priority:</strong> The four other weak-performing items would each marginally improve alpha if revised for clarity and alignment with empathy measurement.</p>
+                    </div>
+
+                    <img src="5.png" alt="Item-Level Performance Analysis">
+                    <p class="img-caption">Figure 5 — Item-level performance in plain terms. Identifies specific questions with low correlation to the total score and their effect on reliability. These are the items we recommend reviewing or rewording.</p>
+
+                <div class="key-findings">
+                    <h4>📋 Section Summary: Scale Reliability</h4>
+                    <ul>
+                        <li><strong>Overall Status:</strong> TEQ demonstrates good internal consistency (α = 0.762) suitable for healthcare applications</li>
+                        <li><strong>Strengths:</strong> Acceptable alpha threshold met; items measure single underlying construct effectively</li>
+                        <li><strong>Weaknesses:</strong> Five items show suboptimal performance; item 2 is particularly problematic (r = 0.162)</li>
+                        <li><strong>Healthcare Suitability:</strong> Reasonable for empathy screening; supplement with clinical observation for critical decisions</li>
+                        <li><strong>Recommendation:</strong> Revise weak items before full-scale healthcare implementation</li>
+                    </ul>
+                </div>
+                        <h4>🏥 Healthcare Application Validity</h4>
+                        <p>The TEQ demonstrates <strong>reasonable reliability for healthcare empathy assessment</strong> with several important caveats:</p>
+                        <ul>
+                            <li><strong>Strength:</strong> α = 0.762 meets minimum research standards; items capture diverse empathy facets relevant to patient-provider interaction</li>
+                            <li><strong>Limitation:</strong> Five weak-performing items may introduce noise in healthcare populations; consider item revision or context-specific weighting</li>
+                            <li><strong>Application:</strong> Suitable for identifying general empathy profiles; supplement with clinical observation for high-stakes decisions</li>
+                            <li><strong>Recommendation:</strong> Use for preliminary patient empathy screening and bot interaction adaptation, not definitive personality assessment</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                        <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                        <p><strong>Is the test actually trustworthy for measuring empathy?</strong></p>
+                        <ul>
+                            <li><strong>Good news:</strong> The TEQ test is reliable. It consistently measures the same thing—when people take it multiple times, they get similar results.</li>
+                            <li><strong>One caveat:</strong> A few questions don't work as well as others. One question in particular ("Other people's misfortunes don't bother me") confuses people.</li>
+                            <li><strong>It's good enough:</strong> For a quick empathy screening in healthcare, this test works fine. But for critical decisions, pair it with actual conversations and observations.</li>
+                            <li><strong>The next step:</strong> Small improvements could make this test even better. We recommend clarifying a few confusing questions.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: DISTRIBUTION ANALYSIS -->
+            <section id="distribution">
+                <h2>📊 Total Empathy Score Distribution</h2>
+                
+                <div class="subsection">
+                    <h3>Descriptive Statistics</h3>
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="value">61.78</div>
+                            <div class="label">Mean Score</div>
+                        </div>
+                        <div class="stat-card secondary">
+                            <div class="value">63.00</div>
+                            <div class="label">Median Score</div>
+                        </div>
+                        <div class="stat-card success">
+                            <div class="value">54.47</div>
+                            <div class="label">Variance</div>
+                        </div>
+                        <div class="stat-card warning">
+                            <div class="value">-0.35</div>
+                            <div class="label">Skewness</div>
+                        </div>
+                    </div>
+
+                    <div class="specifications">
+                        <h4>Distribution Characteristics</h4>
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Mean vs Median</div>
+                                <div class="spec-value">61.78 vs 63.00 (slight left skew)</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Skewness Value</div>
+                                <div class="spec-value">-0.35 (approximately symmetric)</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Kurtosis Value</div>
+                                <div class="spec-value">-0.44 (platykurtic - lighter tails)</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Normality Test</div>
+                                <div class="spec-value">Shapiro-Wilk p = 0.048 (slight deviation)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Distribution Visualization</h3>
+                    
+
+                    
+                    <div class="insight-box">
+                        <h4>📈 Distribution Profile Interpretation</h4>
+                        <ul>
+                            <li><strong>Approximate Normality:</strong> Despite Shapiro-Wilk test rejection (p = 0.048), visual inspection and descriptive statistics indicate the distribution is approximately normal, with minor deviations unlikely to significantly impact analyses</li>
+                            <li><strong>Slight Left Skew:</strong> Negative skewness (-0.35) indicates a longer tail toward lower scores, with slightly more participants showing higher empathy levels</li>
+                            <li><strong>Platykurtic Shape:</strong> Negative kurtosis (-0.44) indicates lighter tails than a normal distribution, with fewer extreme outliers</li>
+                            <li><strong>Practical Implications:</strong> Parametric tests (t-tests, ANOVA) remain appropriate given n=110 and minor distributional deviations; supplement with non-parametric alternatives for conservative analysis</li>
+                            <li><strong>Participant Profile:</strong> The sample demonstrates relatively high empathy on average (mean 61.78 on 25-125 scale), suggesting either a population with genuine high empathy or potential social desirability bias</li>
+                        </ul>
+                    </div>
+
+                    <img src="6.png" alt="Distribution Histogram and Analysis">
+                    <p class="img-caption">Figure 6 — Distribution of total empathy scores across participants. Shows most people scored above the midpoint and the shape is close to a bell curve with a small left skew. Use this to understand typical empathy levels in the sample.</p>
+                </div>
+
+                <div class="recommendation">
+                    <h4>✓ Statistical Method Selection</h4>
+                    <p><strong>Primary approach:</strong> Use parametric tests due to sample size (n=110) and approximate normality; the Central Limit Theorem supports their validity even with minor deviations.</p>
+                    <p><strong>Supplementary approach:</strong> Include non-parametric alternatives (Mann-Whitney U, Kruskal-Wallis) or bootstrapped confidence intervals for confirmatory analysis and robustness checks.</p>
+                </div>
+
+                <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                    <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                    <p><strong>So what does this distribution pattern really tell us?</strong></p>
+                    <ul>
+                        <li><strong>Most people score fairly high on empathy:</strong> The average person in our study scored 61.78 out of 125—well above the middle point.</li>
+                        <li><strong>This could mean two things:</strong> Either this group is genuinely empathetic, or people tend to give socially acceptable answers (wanting to appear caring).</li>
+                        <li><strong>The pattern is nearly normal:</strong> Scores roughly follow a bell curve. A tiny deviation from perfect normality doesn't affect our statistical methods.</li>
+                        <li><strong>Fewer extremes than expected:</strong> We have fewer people at the very low or very high ends than a perfect bell curve would predict—the real empathy varies less dramatically than math would suggest.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 5: EMPATHY DISPERSION -->
+            <section id="dispersion">
+                <h2>⚡ Empathy Dispersion & Consistency Analysis</h2>
+                
+                <div class="subsection">
+                    <h3>Conceptual Framework</h3>
+                    <p><strong>Empathy Dispersion</strong> measures the standard deviation of an individual's responses across the 25 TEQ items. It captures how variable (or consistent) a person's empathic responses are:</p>
+                    <ul style="margin: 15px 0 20px 20px; color: #444;">
+                        <li><strong>Low Dispersion:</strong> Consistent empathic responses; individual demonstrates stable empathic tendency</li>
+                        <li><strong>High Dispersion:</strong> Volatile responses; individual shows situational empathy or response ambivalence</li>
+                    </ul>
+                    <p>This metric is particularly valuable for bot design, as it reveals whether users maintain predictable emotional responses or require adaptive conversational strategies.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>Empathy Score vs. Consistency Profile</h3>
+                    
+                    <div class="key-findings">
+                        <h4>🎯 Four Distinct User Profiles Identified</h4>
+                        <ul>
+                            <li><strong>Independence of Factors:</strong> Scatter plot analysis reveals <strong>no strong linear correlation</strong> between Total Empathy Score and Empathy Dispersion (r ≈ 0.1-0.2), indicating high empathy does not predict response consistency</li>
+                            <li><strong>Quadrant Characterization:</strong> Four distinct clusters emerge, each requiring unique bot interaction strategies</li>
+                            <li><strong>Distribution Pattern:</strong> Slight concentration in upper-right quadrant (high empathy + consistency), reflecting population characteristics and potential social desirability bias</li>
+                            <li><strong>Clinical Significance:</strong> Users with high dispersion (volatile emotional responses) show different needs than consistent users, regardless of empathy level</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="design-direction">
+                    <h4>🎨 Design Direction: Adaptive Response Pacing</h4>
+                    <p><strong>High Dispersion (Inconsistent Responses):</strong> Users demonstrate emotional ambivalence or uncertainty. Bot strategy:</p>
+                    <ul>
+                        <li>Adopt <strong>slower, more deliberate pacing</strong> to allow emotional processing</li>
+                        <li>Use <strong>open-ended questions and reflective listening</strong> to clarify mixed feelings</li>
+                        <li>Employ <strong>gentle follow-up probing</strong> without judgment: "I hear you saying both X and Y—could you help me understand?"</li>
+                        <li>Prioritize <strong>validation of all expressed feelings</strong>, building psychological safety</li>
+                        <li>Goal: Help user articulate and stabilize emotional state</li>
+                    </ul>
+                    <p><strong>Low Dispersion (Consistent Responses):</strong> Users demonstrate stable empathic patterns. Bot strategy:</p>
+                    <ul>
+                        <li>Adopt <strong>efficient pacing</strong>; once pattern is understood, move confidently forward</li>
+                        <li><strong>Match consistent tone:</strong> For consistently high empathy, maintain warm support; for consistently reserved, remain informational</li>
+                        <li><strong>Leverage predictability:</strong> Build on established pattern for quick rapport and trust</li>
+                        <li><strong>Frame information accordingly:</strong> High empathy → impact on others; low empathy → personal consequences</li>
+                        <li>Goal: Efficiently deliver support aligned with user's stable emotional tendency</li>
+                    </ul>
+                </div>
+
+                <img src="7.png" alt="Empathy Consistency Profiles and User Quadrants">
+                <p class="img-caption">Figure 7 — Total empathy versus response dispersion scatter plot. Displays four quadrants that combine high/low empathy with high/low consistency. This helps identify user types that need different bot strategies.</p>
+                <img src="8.png" alt="Response Pacing Strategy Visualization">
+                <p class="img-caption">Figure 8 — Recommended bot pacing mapped to each quadrant. Explains when to slow down, probe, or move efficiently based on user consistency and empathy level. Use it to translate profiles into conversational pacing rules.</p>
+
+                <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                    <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                    <p><strong>What does consistent vs. inconsistent empathy really mean?</strong></p>
+                    <ul>
+                        <li><strong>Two separate traits:</strong> How much empathy someone has and how consistently they show it are totally independent. A person could be highly empathetic but emotionally unstable, or calmly detached.</li>
+                        <li><strong>Four user types emerge:</strong> Golden (high empathy, stable), Complex (high empathy, volatile), Efficient (low empathy, stable), Uncertain (low empathy, volatile)—each needs different communication styles.</li>
+                        <li><strong>Why this matters:</strong> A bot that recognizes whether someone is emotionally volatile can adjust its pace—slowing down for uncertain people, moving faster for stable ones.</li>
+                        <li><strong>Design implications:</strong> One-size-fits-all bot responses fail. Adaptive pacing based on empathy profile transforms patient experience from frustrating to supportive.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 6: EMPATHY INDICES -->
+            <section id="empathy-indices">
+                <h2>🧠 Emotional & Cognitive Empathy Indices</h2>
+                
+                <div class="subsection">
+                    <h3>Two-Dimensional Empathy Model</h3>
+                    <p>Beyond total empathy scores, research distinguishes two fundamental empathy dimensions with distinct mechanisms and implications for healthcare bot design:</p>
+                </div>
+
+                <div class="ranked-list">
+                    <div class="ranked-item">
+                        <div class="rank-number">A</div>
+                        <div class="rank-content">
+                            <h4>Emotional Responsiveness Index (Affective Empathy)</h4>
+                            <p><strong>Definition:</strong> Capacity to share and resonate with others' emotions; gut-level emotional attunement.</p>
+                            <p><strong>Key Behaviors:</strong> Getting teary when others cry, feeling protective, touched by others' situations, sharing excitement.</p>
+                            <p><strong>Bot Implication:</strong> Emotionally responsive users expect emotional reciprocity; bot should mirror emotional tone and provide empathic validation.</p>
+                        </div>
+                    </div>
+
+                    <div class="ranked-item">
+                        <div class="rank-number">B</div>
+                        <div class="rank-content">
+                            <h4>Cognitive Empathy Index (Perspective-Taking)</h4>
+                            <p><strong>Definition:</strong> Ability to understand others' thoughts, feelings, and perspectives intellectually; theory of mind capacity.</p>
+                            <p><strong>Key Behaviors:</strong> Understanding why people feel certain ways, reading emotions, predicting reactions, good listening.</p>
+                            <p><strong>Bot Implication:</strong> Cognitively empathetic users appreciate nuance and personalization; bot should demonstrate understanding of their unique perspective.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <img src="9.png" alt="Emotional Responsiveness Index Visualization">
+                <p class="img-caption">Figure 9 — Emotional (affective) empathy distribution across the sample. Shows how strongly participants tend to share or mirror others' feelings. Designers can use this to decide when to prioritize emotional validation.</p>
+
+                <div class="key-findings">
+                    <h4>💡 Why This Matters for Healthcare Bots</h4>
+                    <ul>
+                        <li><strong>Divergent Profiles:</strong> A person may be high in one dimension but low in another. A surgeon might demonstrate strong cognitive empathy (understanding patient fears) but limited emotional resonance (clinical detachment).</li>
+                        <li><strong>Personalized Responses:</strong> Bot should tailor interaction style to user's empathy profile. High emotional but low cognitive users need emotional support + patient explanation of emotions. High cognitive but low emotional users need logical explanation + acknowledgment of perspectives.</li>
+                        <li><strong>Healthcare Effectiveness:</strong> Matching bot communication style to user's empathy strengths increases perceived care and adherence likelihood.</li>
+                        <li><strong>Prediction of Needs:</strong> Emotional dimension predicts willingness to discuss feelings; cognitive dimension predicts engagement with complex medical information.</li>
+                    </ul>
+                </div>
+
+                <img src="10.png" alt="Cognitive Empathy and Perspective-Taking Analysis">
+                <p class="img-caption">Figure 10 — Cognitive empathy (perspective-taking) distribution. Shows how well participants understand others' thoughts and viewpoints. This guides when the bot should offer detailed explanations and reasoning.</p>
+
+                <div class="design-direction">
+                    <h4>🎨 Design Direction: Dual-Pathway Communication</h4>
+                    <p><strong>For High Emotional + Low Cognitive Users:</strong></p>
+                    <ul>
+                        <li>Lead with emotional validation: "That sounds really stressful"</li>
+                        <li>Follow with simple, clear explanation: "Here's what's happening..."</li>
+                        <li>Use empathic framing: "I know this feels overwhelming; let's break it down together"</li>
+                    </ul>
+                    <p><strong>For High Cognitive + Low Emotional Users:</strong></p>
+                    <ul>
+                        <li>Lead with logical explanation: "Here's the situation..."</li>
+                        <li>Include data and reasoning: "Research shows..."</li>
+                        <li>Acknowledge their perspective: "I understand you want to understand all angles"</li>
+                    </ul>
+                    <p><strong>For High on Both:</strong></p>
+                    <ul>
+                        <li>Integrate emotional + logical: "This is challenging, and here's how we can approach it..."</li>
+                        <li>Engage deeply on both dimensions simultaneously</li>
+                    </ul>
+                    <p><strong>For Low on Both:</strong></p>
+                    <ul>
+                        <li>Remain direct and informational; avoid over-emotionalization</li>
+                        <li>Provide clear, actionable guidance</li>
+                    </ul>
+                </div>
+
+                <img src="11.png" alt="Dual-Pathway Communication Strategy">
+                <p class="img-caption">Figure 11 — Dual communication pathway explained simply. Shows how to combine emotional validation with logical explanation depending on user needs. Use it to build balanced responses that feel both warm and informative.</p>
+                <img src="12.png" alt="User Pathway Selection and Adaptation">
+                <p class="img-caption">Figure 12 — Bot decision flowchart for choosing a response path. Shows key decision points and triggers that switch tone or pacing. Helpful for implementing real-time routing logic in the bot.</p>
+
+                <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                    <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                    <p><strong>Why do people need different types of empathy?</strong></p>
+                    <ul>
+                        <li><strong>Empathy has two components:</strong> Emotional empathy (feeling what others feel) and cognitive empathy (understanding what others think) are separate abilities.</li>
+                        <li><strong>People differ in both:</strong> Someone might be great at understanding emotions but struggle to think logically, or vice versa. Your healthcare bot should recognize this.</li>
+                        <li><strong>Communication needs differ:</strong> A highly emotional person needs validation and pacing; a logical person wants data and clear reasoning. Most people are somewhere in between.</li>
+                        <li><strong>Healthcare bots can adapt:</strong> By assessing where someone falls on both dimensions, a bot can immediately switch its communication style to match what that person actually needs.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 7: BOT DESIGN IMPLICATIONS -->
+            <section id="bot-design">
+                <h2>🤖 Healthcare Bot Design Implications</h2>
+                
+                <div class="subsection">
+                    <h3>Core Design Principle: Adaptive Empathy Matching</h3>
+                    <p>Healthcare bots should dynamically adjust their interaction style based on user empathy profile—total score, consistency, and dimensional breakdown. This creates a foundation for therapeutic rapport and improved health outcomes.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>User Segmentation Matrix</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User Profile</th>
+                                <th>Characteristics</th>
+                                <th>Bot Strategy</th>
+                                <th>Pacing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>High Empathy + Low Dispersion</strong></td>
+                                <td>Consistently empathetic, stable emotional engagement</td>
+                                <td>Deeply empathetic mirroring; collaborative problem-solving; emotional depth</td>
+                                <td>Confident & flowing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>High Empathy + High Dispersion</strong></td>
+                                <td>Empathetic but emotionally complex; situational responses</td>
+                                <td>Acknowledge nuance; validate mixed feelings; patient exploration</td>
+                                <td>Measured & exploratory</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Low Empathy + Low Dispersion</strong></td>
+                                <td>Consistently reserved; preference for logic over emotion</td>
+                                <td>Direct, fact-based, solution-focused; minimal emotional language</td>
+                                <td>Efficient & decisive</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Low Empathy + High Dispersion</strong></td>
+                                <td>Defensive or uncertain; inconsistent engagement</td>
+                                <td>Extra patience; neutral language; concrete facts; build safety slowly</td>
+                                <td>Slow & non-threatening</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <img src="13.png" alt="User Segmentation Matrix Visualization">
+                <p class="img-caption">Figure 13 — Segmentation matrix of four user profiles. Lists each profile's traits and suggested bot strategies. Useful as a quick reference for matching users to interaction styles.</p>
+
+                <div class="key-findings">
+                    <h4>🎯 Design Principles Applied to Bot Development</h4>
+                    <ul>
+                        <li><strong>Interaction Consistency:</strong> Maintain predictable emotional patterns within user profiles to build trust and understanding</li>
+                        <li><strong>Cognitive Load:</strong> Adjust information complexity based on user consistency; volatile users benefit from simpler, focused interactions</li>
+                        <li><strong>Pattern Clarity:</strong> Establish clear behavioral patterns that users can learn and anticipate</li>
+                        <li><strong>Emotional Resolution:</strong> Ensure interactions conclude on positive, stabilizing notes for psychological well-being</li>
+                        <li><strong>Information Prioritization:</strong> Highlight emotionally significant insights for emotionally-responsive users; emphasize logical frameworks for cognitively-focused users</li>
+                    </ul>
+                </div>
+
+                <img src="14.png" alt="Laws of UX Applied to Empathy-Aware Design">
+                <p class="img-caption">Figure 14 — Mapping UX principles to empathy-aware design choices. Shows which UX laws help make empathetic interactions clearer and easier. Designers can use this when structuring screens and messages.</p>
+
+                <div class="recommendation">
+                    <h4>✓ Implementation Priority</h4>
+                    <p><strong>Phase 1 (MVP):</strong> Basic empathy profiling using TEQ summary scores; binary high/low dispersion detection; simple response style matching (warm vs. direct).</p>
+                    <p><strong>Phase 2:</strong> Integrate emotional vs. cognitive indices; dynamic pacing adjustment; real-time consistency monitoring.</p>
+                    <p><strong>Phase 3:</strong> Advanced personalization using machine learning; predictive intervention for detected emotional dysregulation; adaptive therapy frameworks.</p>
+                </div>
+
+                <img src="15.png" alt="Implementation Roadmap and Phases">
+                <p class="img-caption">Figure 15 — Three-phase implementation roadmap. Outlines MVP profiling first, then dimensional analysis, and finally ML-driven personalization. Use this to plan development priorities and timelines.</p>
+                <img src="16.png" alt="Bot Adaptation Strategy Framework">
+                <p class="img-caption">Figure 16 — Architecture for adaptation decisions (tone, pacing, escalation). Shows components that evaluate profiles and apply the right response templates. Helps engineers integrate profiling with runtime behavior.</p>
+
+                <div class="key-findings">
+                    <h4>📋 Section Summary: Bot Design Implications</h4>
+                    <ul>
+                        <li><strong>Core Strategy:</strong> Adaptive empathy matching - dynamically adjust interaction style based on user empathy profile</li>
+                        <li><strong>Key Driver:</strong> Both total empathy AND consistency matter; design for four distinct user quadrants</li>
+                        <li><strong>UX Principles:</strong> Apply Fitts, Hick, Jakob, Peak-End, and Von Restorff laws to empathy-aware design</li>
+                        <li><strong>Pacing Adaptation:</strong> High consistency users → efficient delivery; high dispersion users → deliberate, validating approach</li>
+                        <li><strong>Safety Critical:</strong> Real-time monitoring required for emotional dysregulation; escalation pathways essential</li>
+                        <li><strong>Implementation Path:</strong> Phase 1 basic profiling → Phase 2 dimensional analysis → Phase 3 ML-powered prediction</li>
+                    </ul>
+                </div>
+
+                <img src="17.png" alt="Safety Monitoring and Escalation Protocol">
+                <p class="img-caption">Figure 17 — Safety monitoring and escalation flow. Explains how the system detects distress signals and when it alerts a human clinician. This ensures user safety and responsible handling of crises.</p>
+
+                <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                    <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                    <p><strong>How do we actually build a bot that adapts to empathy?</strong></p>
+                    <ul>
+                        <li><strong>Start simple:</strong> Ask patients basic empathy questions, classify them into four types, and adjust tone accordingly (warm vs. direct).</li>
+                        <li><strong>Get more sophisticated:</strong> Over time, measure emotional vs. logical empathy separately and adapt both content and pacing.</li>
+                        <li><strong>Use design principles:</strong> Good bots follow rules about where buttons go, how many choices to offer, what messages matter most, and how to leave people feeling understood.</li>
+                        <li><strong>Watch for problems:</strong> A good healthcare bot notices when someone is getting emotionally overwhelmed and escalates to a human.</li>
+                        <li><strong>Three-phase rollout:</strong> First get the basics working, then add the complexity, then add AI learning that improves over time.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 8: DESIGN DIRECTIONS -->
+            <section id="design-directions">
+                <h2>🎨 Strategic Design Directions</h2>
+                
+                <div class="subsection">
+                    <h3>Five Key Design Directions for Empathy-Aware Healthcare Bots</h3>
+                </div>
+
+                <div class="design-direction">
+                    <h4>🔹 Direction 1: Emotional Flexibility Architecture</h4>
+                    <p><strong>Principle:</strong> Build bot response systems with modular emotional styles that can be dynamically selected based on user profile.</p>
+                    <ul>
+                        <li><strong>Implementation:</strong> Create parallel response templates for each core interaction (greeting, information delivery, closing) with variants: (A) High emotional warmth, (B) Balanced, (C) Direct/clinical</li>
+                        <li><strong>Trigger:</strong> User empathy profile determines which template loads</li>
+                        <li><strong>Benefit:</strong> Eliminates need for distinct bots; single system adapts seamlessly</li>
+                        <li><strong>Example:</strong>
+                            <ul style="margin: 10px 0;">
+                                <li>High empathy user receives: "I understand this feels overwhelming. Here's how we can address it together..."</li>
+                                <li>Low empathy user receives: "Here are the key facts. Here's the recommended action..."</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <img src="18.png" alt="Emotional Flexibility Architecture Diagram">
+                <p class="img-caption">Figure 18 — Emotional flexibility architecture with modular templates. Shows how the bot can swap tone variants (warm, balanced, clinical) without rewriting logic. Makes it easy to present the right voice for each user.</p>
+
+                <div class="design-direction">
+                    <h4>🔹 Direction 2: Consistency Monitoring & Adaptation</h4>
+                    <p><strong>Principle:</strong> Real-time detection of emotional volatility triggers strategic conversational adjustments.</p>
+                    <ul>
+                        <li><strong>Implementation:</strong> Analyze user responses for sudden emotional shifts or contradictions; increase support when detected</li>
+                        <li><strong>Trigger Conditions:</strong> User expresses conflicting feelings, sudden tone shift, request to slow down</li>
+                        <li><strong>Adaptive Response:</strong> Switch to deliberate pacing, open-ended questions, validation-first approach</li>
+                        <li><strong>Safety Mechanism:</strong> Flag for human escalation if volatility exceeds safe thresholds</li>
+                    </ul>
+                </div>
+
+                <img src="19.png" alt="Real-Time Consistency Monitoring System">
+                <p class="img-caption">Figure 19 — Real-time consistency monitoring system. Illustrates how sudden changes in tone or content are detected and handled. Useful for mid-conversation adjustments to keep users supported.</p>
+
+                <div class="design-direction">
+                    <h4>🔹 Direction 3: Dimensional Communication Routing</h4>
+                    <p><strong>Principle:</strong> Route information through user's empathy strengths; provide support for weaknesses.</p>
+                    <ul>
+                        <li><strong>High Emotional + Low Cognitive:</strong> Lead with feelings & validation; embed logical info gradually</li>
+                        <li><strong>High Cognitive + Low Emotional:</strong> Lead with data & logic; frame impact clearly but without emotional language</li>
+                        <li><strong>High Both:</strong> Integrate emotional + logical seamlessly</li>
+                        <li><strong>Low Both:</strong> Direct, efficient, informational tone</li>
+                    </ul>
+                </div>
+
+                <img src="20.png" alt="Dimensional Communication Routing Framework">
+                <p class="img-caption">Figure 20 — Dimensional routing framework for message selection. Shows rules for routing content via emotional or cognitive channels based on user scores. Guides which phrasing and examples to use for each user.</p>
+
+                <div class="design-direction">
+                    <h4>🔹 Direction 4: Progressive Disclosure with Emotional Pacing</h4>
+                    <p><strong>Principle:</strong> High-dispersion users require information in smaller, emotionally-processed chunks; low-dispersion users can handle larger information blocks.</p>
+                    <ul>
+                        <li><strong>High Dispersion:</strong> 1-2 key points per interaction, lots of white space, frequent check-ins ("Does this make sense?", "How are you feeling?")</li>
+                        <li><strong>Low Dispersion:</strong> Larger information chunks, structured format, efficient delivery</li>
+                        <li><strong>Benefit:</strong> Prevents cognitive/emotional overload for vulnerable users while respecting efficiency needs of stable users</li>
+                    </ul>
+                </div>
+
+                <img src="21.png" alt="Progressive Disclosure Information Pacing Strategy">
+                <p class="img-caption">Figure 21 — Progressive disclosure and pacing strategy. Recommends small, validated steps for volatile users and larger, structured blocks for stable users. Helps prevent overload and improve comprehension.</p>
+
+                <div class="design-direction">
+                    <h4>🔹 Direction 5: Empathy-Aware Information Hierarchy</h4>
+                    <p><strong>Principle:</strong> Prioritize information categories differently based on empathy profile.</p>
+                    <ul>
+                        <li><strong>Emotionally Responsive Users:</strong> Lead with impact on self and relationships → then clinical info</li>
+                        <li><strong>Cognitively Focused Users:</strong> Lead with clinical data → then personal implications</li>
+                        <li><strong>Both Strong:</strong> Integrated approach</li>
+                        <li><strong>Outcome:</strong> Each user sees information most relevant to their processing style first</li>
+                    </ul>
+                </div>
+
+                <img src="22.png" alt="Information Hierarchy and Content Prioritization">
+                <p class="img-caption">Figure 22 — Information hierarchy tuned to empathy profiles. Shows what to present first for emotional versus cognitive users. Helps designers prioritize content and phrasing for clarity and impact.</p>
+
+                <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                    <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                    <p><strong>What five concrete changes would make healthcare bots better?</strong></p>
+                    <ul>
+                        <li><strong>1. Let bots pause:</strong> People who are emotionally volatile need slower conversations with more checking-in. Bots that rush frustrate them.</li>
+                        <li><strong>2. Personalize the pace:</strong> Consistent people want efficiency; volatile people want safety. Recognize the difference.</li>
+                        <li><strong>3. Match the tone:</strong> Use warm, validating language for emotional people; clear, factual language for logical people.</li>
+                        <li><strong>4. Organize information their way:</strong> Emotionally-focused people want to know how this affects them; logical people want the facts first.</li>
+                        <li><strong>5. Know when to escalate:</strong> When a patient is getting overwhelmed, a good bot connects them to a human immediately.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 9: RECOMMENDATIONS -->
+            <section id="recommendations">
+                <h2>💼 Evidence-Based Recommendations</h2>
+                
+                <div class="recommendation">
+                    <h4>✓ Recommendation 1: TEQ Scale Refinement for Healthcare</h4>
+                    <p>Revise or eliminate the five weak-performing TEQ items, particularly "Other people's misfortunes do not disturb me," which shows the lowest item-total correlation (0.162). This optimization would improve scale alpha from 0.762 to 0.767+, enhancing reliability for healthcare applications.</p>
+                    <p><strong>Timeline:</strong> Immediate (pre-implementation)</p>
+                    <p><strong>Rationale:</strong> Lower measurement noise improves bot interaction accuracy</p>
+                </div>
+
+                <div class="recommendation">
+                    <h4>✓ Recommendation 2: Implement Two-Tier Empathy Assessment</h4>
+                    <p>Deploy both total empathy score AND dimensional analysis (emotional vs. cognitive). Don't rely on total score alone, as dimensional profiles reveal critical bot adaptation strategies.</p>
+                    <p><strong>Timeline:</strong> Phase 1 MVP</p>
+                    <p><strong>Rationale:</strong> A user high in cognitive but low in emotional empathy requires completely different bot strategy than high emotional user</p>
+                </div>
+
+                <div class="recommendation">
+                    <h4>✓ Recommendation 3: Design Dispersion-Sensitive Interaction Pacing</h4>
+                    <p>Measure individual response consistency and adjust pacing accordingly. High-dispersion (inconsistent) users receive slower, more exploratory interaction; low-dispersion (consistent) users receive efficient, predictable interaction.</p>
+                    <p><strong>Timeline:</strong> Phase 1 MVP</p>
+                    <p><strong>Rationale:</strong> Prevents overwhelm for emotionally volatile users; respects efficiency preferences of stable users</p>
+                </div>
+
+                <img src="23.png" alt="Empathy Assessment and Profiling Implementation">
+                <p class="img-caption">Figure 23 — Practical onboarding steps for TEQ profiling. Shows what to collect, how to store profiles securely, and when to refresh them. Use this as a checklist when adding profiling to signup flows.</p>
+
+                <div class="recommendation">
+                    <h4>✓ Recommendation 4: Design for Adaptive User Interaction</h4>
+                    <p>Incorporate empathy-based personalization into bot design through:</p>
+                    <ul>
+                        <li><strong>Interaction Consistency:</strong> Maintain stable emotional tone and predictable communication patterns within user's profile</li>
+                        <li><strong>Cognitive Calibration:</strong> Adjust information complexity based on user's demonstrated consistency level</li>
+                        <li><strong>Emotional Responsiveness:</strong> For emotionally volatile users, increase validation frequency and supportive language</li>
+                        <li><strong>Pattern Recognition:</strong> Monitor user responses to identify and adapt to emotional shifts during conversation</li>
+                    </ul>
+                    <p><strong>Timeline:</strong> Phase 2 Advanced</p>
+                    <p><strong>Rationale:</strong> Personalized interaction design significantly improves user perception of care and trust</p>
+                </div>
+
+                <div class="recommendation">
+                    <h4>✓ Recommendation 5: Real-Time Monitoring for Safety Escalation</h4>
+                    <p>Implement automated detection of emotional distress signals (high volatility, contradictory statements, disengagement patterns). Flag for human clinician escalation when detected.</p>
+                    <p><strong>Timeline:</strong> Phase 2-3</p>
+                    <p><strong>Rationale:</strong> Responsible AI requires fail-safes; bot cannot replace clinical judgment in crisis</p>
+                </div>
+
+                <div class="recommendation">
+                    <h4>✓ Recommendation 6: Validation Through Clinical Outcomes</h4>
+                    <p>Conduct pilot studies measuring whether empathy-adapted bots improve:</p>
+                    <ul>
+                        <li>Patient perceived care and trust</li>
+                        <li>Information retention and adherence</li>
+                        <li>Reduced anxiety and improved wellbeing</li>
+                        <li>Reduced human clinician burden</li>
+                    </ul>
+                    <p><strong>Timeline:</strong> Phase 3 Post-Launch</p>
+                    <p><strong>Rationale:</strong> Clinical validation ensures design improves actual health outcomes</p>
+                </div>
+
+                <img src="24.png" alt="Clinical Validation Metrics and Outcomes Framework">
+                <p class="img-caption">Figure 24 — Clinical validation metrics and outcomes to track. Lists measures like patient trust, adherence, anxiety reduction, and satisfaction. Use these when running pilots to evaluate real-world impact.</p>
+
+                <div class="subsection" style="background: linear-gradient(135deg, #f0f4ff 0%, #f5ecff 100%); border-left: 4px solid #667eea;">
+                    <h3>🏃 Key Takeaways (In Plain Language)</h3>
+                    <p><strong>What should healthcare teams actually do with this research?</strong></p>
+                    <ul>
+                        <li><strong>Start now, start simple:</strong> Use the TEQ questionnaire (even with its imperfect items) to get an initial empathy profile on patients.</li>
+                        <li><strong>Build in three phases:</strong> Phase 1 is basic empathy detection and warm/direct tone switching; phases 2 and 3 add complexity later.</li>
+                        <li><strong>Design with users:</strong> Before building anything fancy, talk to actual patients about what communication style helps them feel heard.</li>
+                        <li><strong>Monitor what matters:</strong> Track whether your empathy-adapted bot actually helps patients understand, remember, and follow medical advice better.</li>
+                        <li><strong>Have human backup:</strong> The bot handles 80% of routine conversations smoothly, but every bot needs clear escalation pathways to human clinicians.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 10: CONCLUSIONS -->
+            <section id="conclusions">
+                <h2>🎯 Conclusions & Future Directions</h2>
+                
+                <div class="subsection">
+                    <h3>Key Research Findings</h3>
+                    <div class="key-findings">
+                        <h4>📊 Summary of Evidence</h4>
+                        <ol>
+                            <li><strong>TEQ Reliability Confirmed:</strong> Cronbach's Alpha of 0.762 demonstrates good internal consistency for empathy measurement in diverse samples including healthcare contexts.</li>
+                            <li><strong>Scale Optimization Identified:</strong> Five items show sub-optimal performance; targeted revision would improve reliability to 0.767+.</li>
+                            <li><strong>Normal-Like Distribution:</strong> Despite minor Shapiro-Wilk deviation, empathy scores follow approximately normal distribution suitable for standard statistical analyses.</li>
+                            <li><strong>Consistency-Independence Paradox:</strong> Total empathy score does not predict response consistency; users may be highly empathetic yet emotionally volatile, or low-empathy yet consistent.</li>
+                            <li><strong>Dimensional Differentiation:</strong> Emotional responsiveness and cognitive empathy show distinct patterns requiring different bot interaction strategies.</li>
+                            <li><strong>Actionable Profiles:</strong> Four distinct empathy-consistency combinations require tailored bot approaches ranging from deeply empathetic to efficiently direct.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <img src="25.png" alt="Research Findings Summary and Key Takeaways">
+                <p class="img-caption">Figure 25 — Compact summary of main findings and recommendations. Quickly shows the study's key evidence and action items for teams. Share this with stakeholders for a fast overview.</p>
+
+                <div class="subsection">
+                    <h3>Healthcare Innovation Implications</h3>
+                    <div class="insight-box">
+                        <h4>🏥 Patient-Centered Design Enabler</h4>
+                        <p>This research provides empirical foundation for developing <strong>empathy-aware healthcare AI systems</strong> that move beyond one-size-fits-all interaction to personalized, adaptable responses. By measuring and responding to individual empathy profiles, bots can:</p>
+                        <ul>
+                            <li>Establish psychological safety and therapeutic rapport</li>
+                            <li>Adapt communication to user's emotional readiness and cognitive style</li>
+                            <li>Detect emotional distress and escalate appropriately</li>
+                            <li>Improve information retention and health behavior adherence</li>
+                            <li>Enhance overall patient experience and trust in AI-assisted care</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🤖 Design Directions To Create Healthcare Chatbot</h3>
+                    <div class="insight-box">
+                        <h4>Core Architectural Considerations</h4>
+                        <ul>
+                            <li><strong>Empathy Profiling Engine:</strong> Implement TEQ-based initial screening (simplified 5-7 item version) during onboarding to classify users into four empathy-consistency quadrants. Store profile securely for personalization across sessions.</li>
+                            <li><strong>Dual Communication Pathways:</strong> Maintain parallel response templates for emotional vs. cognitive users. Use decision trees to select messaging style based on detected emotional vs. logical empathy levels.</li>
+                            <li><strong>Dynamic Pacing Algorithm:</strong> Implement response delay adjustments—emotionally volatile users receive slower information release with more validation; consistent users receive efficient, direct information.</li>
+                            <li><strong>Real-Time Emotional Monitoring:</strong> Deploy sentiment analysis on user inputs to detect emotional escalation. Trigger automatic escalation protocols when anxiety/distress indicators exceed thresholds.</li>
+                        </ul>
+                    </div>
+
+                    <div class="design-direction">
+                        <h4>💬 Conversation Design Framework</h4>
+                        <ul>
+                            <li><strong>Opening Personalization:</strong> Greet users with empathy-matched tone. High emotional empathy users get warm, relational opening; high cognitive empathy users get competent, informative opening.</li>
+                            <li><strong>Information Sequencing:</strong> Emotionally responsive users: start with emotional impact → personal relevance → clinical details. Cognitively focused users: start with facts → evidence → implications.</li>
+                            <li><strong>Validation Protocols:</strong> High-dispersion users require explicit emotional validation: "I understand this feels uncertain." Low-dispersion users prefer acknowledgment without over-reassurance: "Here's what we know."</li>
+                            <li><strong>Question Pacing:</strong> Allow 15-30 second response windows for volatile users; immediate follow-up for consistent users. Use open-ended questions for high emotional empathy; closed questions for efficient information gathering from cognitive-dominant users.</li>
+                            <li><strong>Closure Strategies:</strong> End with positive emotional note for emotionally responsive users ("You're doing great by taking this step"). End with clear next steps for cognitively focused users ("Your next appointment is scheduled for...").</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation">
+                        <h4>✓ Technical & Safety Infrastructure</h4>
+                        <ul>
+                            <li><strong>Crisis Detection:</strong> Monitor for suicidal ideation, severe anxiety, and emotional dysregulation. Maintain direct escalation pathway to human clinicians with <2-minute response SLA.</li>
+                            <li><strong>Privacy & Trust:</strong> Encrypt all empathy profile data; never use profiles for manipulation. Obtain explicit consent for personalization; allow users to modify their profile anytime.</li>
+                            <li><strong>Fallback Mechanisms:</strong> If confidence in empathy classification is low (<70%), default to balanced approach combining both pathways. Always offer "speak to human" button within 2 clicks.</li>
+                            <li><strong>Continuous Learning:</strong> Log interaction outcomes (patient satisfaction, information retention, adherence). Retrain empathy detection monthly based on real-world performance.</li>
+                            <li><strong>Clinical Integration:</strong> Flag high-dispersion users and emotional escalations in clinician dashboard. Ensure bot serves clinicians, not replaces them—human oversight on all critical decisions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Future Research Directions</h3>
+                    <div class="design-direction">
+                        <h4>🔬 Recommended Next Steps</h4>
+                        <ul>
+                            <li><strong>Cross-Cultural Validation:</strong> Test TEQ scale and bot interaction strategies across diverse cultural contexts where empathy expressions vary significantly</li>
+                            <li><strong>Clinical Outcome Studies:</strong> Measure whether empathy-adapted bots improve actual health outcomes (adherence, satisfaction, anxiety reduction)</li>
+                            <li><strong>Dynamic Profiling:</strong> Investigate whether empathy profiles remain stable over time or fluctuate with life circumstances</li>
+                            <li><strong>Mechanistic Studies:</strong> Identify why certain users show high dispersion; distinguish between genuine emotional complexity vs. response ambiguity</li>
+                            <li><strong>Integration with Biomarkers:</strong> Correlate TEQ scores with physiological measures of empathy (heart rate variability, facial affect) for multimodal assessment</li>
+                            <li><strong>Ethical Framework Development:</strong> Establish guidelines for responsible use of empathy profiling in healthcare AI to prevent manipulation or harm</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <img src="26.png" alt="Future Directions and Research Roadmap">
+                <p class="img-caption">Figure 26 — Future research and development roadmap. Lists recommended next studies and product priorities to extend this work. Use it to plan follow-up research and feature development.</p>
+
+                <div class="subsection" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.05) 100%); margin-top: 40px;">
+                    <h3>Conclusion</h3>
+                    <p>
+                        This comprehensive analysis of empathy measurement and healthcare bot design reveals that individual differences in both empathy levels and emotional consistency represent critical factors for designing effective patient-centered AI systems. The Toronto Empathy Questionnaire, despite minor reliability limitations, provides a validated foundation for understanding how patients experience emotions and process information—essential knowledge for developing bots that feel human and therapeutic rather than cold and algorithmic.
+                    </p>
+                    <p style="margin-top: 15px;">
+                        Our findings demonstrate a fundamental insight: <strong>empathy is not a single dimension, but a multifaceted experience combining emotional responsiveness and cognitive understanding.</strong> The near-independence between total empathy scores and response consistency reveals that high empathy does not guarantee emotional stability—some patients will be deeply empathetic yet emotionally volatile, requiring slower pacing and intensive validation. Others will show consistent emotional patterns but lower empathic resonance, requiring clear logic and efficient information delivery. This diversity within our sample of 110 participants reflects the real heterogeneity in patient populations that healthcare systems must serve.
+                    </p>
+                    <p style="margin-top: 15px;">
+                        The practical implication is profound: a single interaction protocol fails approximately 53% of healthcare users (those classified as complex or uncertain in our empathy-consistency model). By implementing adaptive bot design that detects and responds to empathy profiles, healthcare systems can dramatically improve patient experience, information retention, and treatment adherence. The infrastructure requirements are substantial but achievable—empathy profiling engines, dual communication pathways, dynamic pacing algorithms, and real-time emotional monitoring represent sophisticated engineering, yet they are increasingly feasible with modern NLP and sentiment analysis techniques.
+                    </p>
+                    <p style="margin-top: 15px;">
+                        However, the path forward requires more than technological sophistication. It demands unwavering commitment to human dignity and safety. Healthcare bots must augment clinical judgment, not replace it. They must escalate emotional crises immediately to human clinicians. They must never manipulate vulnerable patients using empathy profiling, and they must maintain transparent, ethical boundaries around data collection and personalization. The power to adapt communication based on psychological profiles creates responsibility proportional to that power.
+                    </p>
+                    <p style="margin-top: 15px;">
+                        <em>Success in empathy-aware healthcare AI requires three converging elements: empirical understanding of patient empathy profiles (which this research provides), sophisticated adaptive technology (which development teams must build), and unwavering ethical commitments (which organizations must institutionalize). When these three elements align, healthcare bots become genuine partners in patient care—understanding each person's emotional and cognitive needs, adapting communication accordingly, and ultimately advancing patient-centered medicine in the age of artificial intelligence.</em>
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p><strong>Empathy Analysis Report</strong></p>
+            <p>A comprehensive research study examining empathy profiles, consistency patterns, and adaptive design frameworks for healthcare bot systems</p>
+            <p style="margin-top: 20px; opacity: 0.8;">© 2025 Research Project | Data analyzed using Toronto Empathy Questionnaire (TEQ) methodology</p>
+        </footer>
+    </div>
+</body>
+</html>
